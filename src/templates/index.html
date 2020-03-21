@@ -1,0 +1,131 @@
+---
+title: Index page
+listItems:
+- быстро и дёшево запускать свои продукты в онлайне;
+- выделиться среди конкурентов, которые массово создают одинаковые сайты на конструкторах а-ля Тильда, Wix, Weblium или покупают шаблоны;
+- уйти в отрыв от конкурентов во время кризиса за счёт новых решений;
+- быстро изменить бизнес-модель, чтобы начать зарабатывать онлайн.
+listItems2:
+- 'Делаем сайт руками от А до Я. Без конструкторов и шаблонов, <span class="line-through">которыми пользуются ваши&nbsp;конкуренты.</span>'
+- 'За $500 вы получаете MVP сайта от креативного агентства. Вы покупаете наш подход, идеи, опыт и&nbsp;навыки.'
+- 'Сайт, на котором вы сейчас находитесь — MVP созданный за 7 дней. Он быстро грузится и работает на&nbsp;слабых устройствах.'
+listItems3:
+- '1. Мы задаём вопросы о вашем бизнесе, чтобы создать структуру и прототип сайта.'
+- '2. Находим ключевые смыслы и пишем тексты.'
+- '3. Переносим тексты на дизайн-макеты.'
+- '4. Верстаем сайт, чтобы он корректно работал во всех браузерах, как на ПК,
+так и мобайле.'
+- '5. Тестируем, устанавливаем аналитику и переносим сайт на ваш хостинг. '
+---
+{% extends "layouts/_layout.html" %}
+{% block content %}
+<header class="header">
+  <div class="container header__container">
+    <div class="logo header__logo">{% include "partials/_logo.svg" %}</div>
+    <h1 class="h1">
+      <span class="h1__first-line purple">Привет!
+        <span class="h1__emoji">{% include "partials/_wink.svg" %}</span>
+      </span>
+      <span class="h1__second-line">Мы — креативное </span>
+      <span class="h1__third-line">агентство <span class="purple">emotiON</span></span>
+    </h1>
+    <div class="scroll-down">
+      <div class="scroll-down__text">Скрольте<br>вниз</div>
+      {% include "partials/_arrow.svg" %}
+    </div>
+    <div class="social header__social">
+      <a href="#" class="social__link">facebook</a>
+      <a href="#" class="social__link">instagram</a>
+      <a href="#" class="social__link">behance</a>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="section">
+    <div class="container section__container">
+      <div class="arrow-block">
+        <div class="arrow-block__left">
+          <div class="arrow-block__arrow-circle">
+            {% include "partials/_big-arrow.html" %}
+          </div>
+        </div>
+        <div class="arrow-block__right">
+          <p class="arrow-block__p"><span class="purple">Карантин</span> и финансовый кризис вынуждает бизнес уйти в
+            <span class="purple">онлайн.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container zero-right-padding section__container section__container--last">
+      <h2 class="h2 because">Поэтому, <span class="purple">компаниям</span> и&nbsp;<span class="purple">брендам</span> сейчас нужно:</h2>
+      <ul class="list-items with-padding">
+        {% for text in listItems %}
+        <li class="list-items__item">
+          <div class="list-items__line list-items__line--before"></div>
+          <span class="list-items__text">{{text}}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+  <div class="black-block">
+    <div class="container">
+      <p class="black-block__big-p"><span class="purple">Знаем, что</span> сейчас нужно оплачивать зарплату сотрудникам, удерживать клиентов, сохранять месячный&nbsp;оборот, и <span class="purple">вы НЕ хотите тратить деньги на бесполезные&nbsp;вещи.</span></p>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container section__container">
+      <div class="arrow-block arrow-block-reverse">
+        <div class="arrow-block__left">
+          <div class="arrow-block__arrow-circle">
+            {% include "partials/_big-arrow.html" %}
+          </div>
+        </div>
+        <div class="arrow-block__right">
+          <p class="arrow-block__p">Мы сделаем <span class="purple">MVP<span class="question"></span></span> одностраничного сайта для вашего бизнеса <span class="purple">за 7 дней и $500</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container zero-right-padding section__container">
+      <h2 class="h2 because">Почему <span class="purple">MVP от emotiON это круто</span> и выгодно?</h2>
+      <p class="descriptor">Мы берём на себя ответственность, что вы получите ТОП-продукт за свои деньги.</p>
+      <ul class="list-items">
+        {% for text in listItems2 %}
+        <li class="list-items__item">
+          <div class="list-items__line list-items__line--before"></div>
+          <div class="list-items__text-wrapper">
+            {% include "partials/_big-arrow.html" %}
+            <span class="list-items__text">{{text|safe}}</span>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {{mixins.btn('Больше преимуществ', 'advantages-button')}}
+    </div>
+  </section>
+  <section class="section">
+    <div class="container zero-right-padding section__container section__container--last">
+      <h2 class="h2 because">План действий</h2>
+      <p class="descriptor">Чтобы создать ракету-пушку, мы будем работать вместе — вы&nbsp;хорошо знаете свой бизнес и&nbsp;расскажете нам о важных моментах.</p>
+      <ul class="list-items with-padding">
+        {{mixins.btn('Важные моменты', 'plan-button')}}
+        {% for text in listItems3 %}
+        <li class="list-items__item">
+          <div class="list-items__line list-items__line--before"></div>
+          <span class="list-items__text">{{text}}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+  <div class="black-block">
+    <div class="container">
+      <h2>Нам не всё равно, что <span class="purple">экономика страны катится вниз</span></h2>
+      <p class="black-block__p">Поэтому мы хотим помочь украинскому бизнесу <span class="purple">уйти в отрыв во время кризиса</span>, не тратя на это много денег. Без потери качества и с вау-эффектом.</p>
+    </div>
+  </div>
+</main>
+{% endblock %}

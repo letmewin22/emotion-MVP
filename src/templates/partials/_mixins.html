@@ -1,0 +1,7 @@
+{% macro btn(text, extendClass) %}
+<button class="button {{extendClass}}">{{text}}
+  <span class="button-rewealer" style="transform: translate(-50%, -50%) scale(0)">
+    <span class="button-text">{{text}}</span>
+  </span>
+</button>
+{% endmacro %}

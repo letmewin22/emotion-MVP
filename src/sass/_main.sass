@@ -1,0 +1,175 @@
+body
+	+a
+	font-size: 1.55vw
+	color: $dark-color
+	background: $main-color
+
+*
+  &::selection
+    background: $accent-color
+    color: white
+
+.header
+	width: 100%
+	height: 100vh
+	background: $dark-color
+	color: white
+	position: relative
+	&__container
+		display: flex
+		align-items: center
+	&__logo
+		position: absolute
+		top: 4%
+	&__social
+		position: absolute
+		bottom: 4%
+
+.h1
+	font-size: 5.2vw
+	line-height: 1.3em
+	&__first-line
+	&__second-line
+		display: block
+		margin-left: 11.5vw
+	&__third-line
+		display: block 
+
+.purple
+	color: $accent-color
+
+.social
+	font-size: 18px
+	display: flex
+	&__link
+		margin-right: 56px
+
+.scroll-down
+	background: $accent-color
+	width: 14vw
+	height: 14vw
+	border-radius: 50%
+	padding-left: 10px
+	padding-right: 10px
+	display: flex
+	justify-content: center
+	align-items: center
+	flex-direction: column
+	position: absolute
+	right: 8.6vw
+	top: 7.68vh
+	text-transform: uppercase
+	+asm
+	font-size: 1.25vw
+	text-align: center
+	&__arrow
+		position: absolute
+		bottom: 15% 
+
+.arrow-block
+	display: flex
+	justify-content: space-between
+	align-items: center
+	&__right
+		margin-left: 16.7vw
+	&__arrow-circle 
+		width: 23vw
+		height: 23vw
+		border-radius: 50%
+		background: $accent-color
+		display: flex
+		justify-content: center
+		align-items: center
+		svg
+			display: block
+	&__p
+		+am
+		font-size: 2.7vw
+		line-height: 1.65em
+		letter-spacing: 0.01em
+		flex-direction: row-reverse
+		position: relative 
+
+.arrow-block-reverse
+	flex-direction: row-reverse
+	.arrow-block
+		&__right
+			margin-left: 0px
+		&__left
+			margin-left: 16.7vw
+		&__arrow-circle 
+			svg
+				transform: rotate(180deg)
+
+.list-items
+	margin-top: 130px
+	position: relative
+	&__line
+		width: 100%
+		height: 3px
+		background: $dark-color
+	&__item
+		&:last-child
+			&::after
+				content: ''
+				width: 100%
+				height: 3px
+				background: $dark-color
+				display: block
+	&__text
+		display: inline-block
+		padding-top: 5.4vh
+		padding-bottom: 5.4vh 
+		line-height: 1.5em
+		padding-right: 5.2vw
+	&.with-padding
+		padding-left: 22.7vw 
+	&__text-wrapper
+		display: flex
+		align-items: center
+		svg
+			margin-right: 5vw
+			fill: $dark-color
+			width: 8%
+		.list-items__text
+			width: 90%
+
+.black-block
+	background: $dark-color
+	color: white
+	padding-top: 9.2vh
+	padding-bottom: 9.2vh
+	&__big-p
+		font-size: 2.2vw
+		+druk
+		line-height: 1.6em
+	h2
+		max-width: 100%
+	&__p
+		margin-top: 28px 
+
+.question
+	// top: 0
+	background: $accent-color
+	color: white
+	padding: 7px
+	border-radius: 50%
+	width: 40px
+	height: 40px
+	display: inline-flex
+	justify-content: center
+	align-items: center
+	font-size: 24px
+	line-height: 1em
+	position: absolute
+	top: -20px
+	margin-left: -10px
+	cursor: pointer 
+	&::after
+		content: '?'
+		display: inline-block
+		margin-top: 3px 
+
+.line-through
+	text-decoration: line-through 
+

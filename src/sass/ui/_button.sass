@@ -1,0 +1,54 @@
+button
+	outline: none
+	-moz-appearance: none
+	-webkit-appearance: none
+
+
+.button
+	border-radius: 50%
+	background: $accent-color
+	+am
+	text-transform: uppercase
+	color: $main-color
+	&.advantages-button
+		width: 18.4vw
+		height: 18.4vw
+		opacity: 1 
+		font-size: 1.7vw
+		margin: 0 auto
+		display: block
+		margin-top: 7vh
+	&.plan-button
+		width: 14.1vw
+		height: 14.1vw
+		opacity: 1 
+		font-size: 1.6vw 
+		display: block
+		position: absolute
+		top: 50%
+		transform: translateY(-50%)
+		left: 0
+
+	.button-rewealer
+		width: 101%
+		height: 101%
+		position: absolute
+		background: white
+		top: 50%
+		left: 50%
+		display: flex
+		justify-content: center
+		align-items: center
+		color: white
+		border-radius: 50%
+	.button-text
+		.word
+			display: inline-block
+			.char
+				display: inline-block
+				transform: translateY(30px)
+				opacity: 0
+	&.footer-button
+		width: 17vw
+		height: 17vw
+		font-size: 1.6vw
