@@ -1,7 +1,15 @@
-{% macro btn(text, extendClass) %}
-<button class="button {{extendClass}}">{{text}}
-  <span class="button-rewealer" style="transform: translate(-50%, -50%) scale(0)">
-    <span class="button-text">{{text}}</span>
+{% macro btn(text, extendClass, color) %}
+<button class="button {{extendClass}}">{{text|safe}}
+  <span class="button-rewealer {{color}}" style="transform: translate(-50%, -50%) scale(0)">
+    <span class="button-text">{{text|safe}}</span>
   </span>
 </button>
+{% endmacro %}
+
+{% macro social(extendClass) %}
+  <div class="social {{extendClass}}">
+    <a target="_blank" href="https://www.facebook.com/emotion.agency2018/" class="social__link">facebook</a>
+    <a target="_blank" href="https://www.instagram.com/emotion.agency/" class="social__link">instagram</a>
+    <a target="_blank" href="https://www.behance.net/emotion-agency" class="social__link">behance</a>
+  </div>
 {% endmacro %}

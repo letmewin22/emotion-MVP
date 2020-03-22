@@ -62,7 +62,7 @@
     "lodash": "^4.3.0"
   },
   "dependencies": {
-    "charming": "^3.0.1",
+    "splitting": "^1.0.6",
     "gsap": "^2.1.3"
   }
 }

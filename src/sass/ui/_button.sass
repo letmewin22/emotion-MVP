@@ -10,6 +10,8 @@ button
 	+am
 	text-transform: uppercase
 	color: $main-color
+	position: relative
+	opacity: 0
 	&.advantages-button
 		width: 18.4vw
 		height: 18.4vw
@@ -28,12 +30,24 @@ button
 		top: 50%
 		transform: translateY(-50%)
 		left: 0
+	&.portfolio-button
+		width: 23vw
+		height: 23vw
+		opacity: 1 
+		font-size: 1.7vw
+		margin: 0 auto
+		display: block
+		margin-top: 7vh
+		text-align: center
+		display: flex
+		justify-content: center
+		align-items: center
 
 	.button-rewealer
 		width: 101%
 		height: 101%
 		position: absolute
-		background: white
+		background: $dark-color
 		top: 50%
 		left: 50%
 		display: flex
@@ -41,6 +55,9 @@ button
 		align-items: center
 		color: white
 		border-radius: 50%
+		&.white
+			color: $dark-color
+			background: white
 	.button-text
 		.word
 			display: inline-block
@@ -49,6 +66,8 @@ button
 				transform: translateY(30px)
 				opacity: 0
 	&.footer-button
-		width: 17vw
-		height: 17vw
-		font-size: 1.6vw
+		width: 14vw
+		height: 14vw
+		font-size: 1.25vw
+		margin-right: 100px
+		float: right

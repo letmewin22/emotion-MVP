@@ -1,24 +1,10 @@
 ---
 title: Index page
-listItems:
-- быстро и дёшево запускать свои продукты в онлайне;
-- выделиться среди конкурентов, которые массово создают одинаковые сайты на конструкторах а-ля Тильда, Wix, Weblium или покупают шаблоны;
-- уйти в отрыв от конкурентов во время кризиса за счёт новых решений;
-- быстро изменить бизнес-модель, чтобы начать зарабатывать онлайн.
-listItems2:
-- 'Делаем сайт руками от А до Я. Без конструкторов и шаблонов, <span class="line-through">которыми пользуются ваши&nbsp;конкуренты.</span>'
-- 'За $500 вы получаете MVP сайта от креативного агентства. Вы покупаете наш подход, идеи, опыт и&nbsp;навыки.'
-- 'Сайт, на котором вы сейчас находитесь — MVP созданный за 7 дней. Он быстро грузится и работает на&nbsp;слабых устройствах.'
-listItems3:
-- '1. Мы задаём вопросы о вашем бизнесе, чтобы создать структуру и прототип сайта.'
-- '2. Находим ключевые смыслы и пишем тексты.'
-- '3. Переносим тексты на дизайн-макеты.'
-- '4. Верстаем сайт, чтобы он корректно работал во всех браузерах, как на ПК,
-так и мобайле.'
-- '5. Тестируем, устанавливаем аналитику и переносим сайт на ваш хостинг. '
 ---
+{% import "data/data.html" as listItems %}
 {% extends "layouts/_layout.html" %}
 {% block content %}
+{% include "partials/_loader.html" %}
 <header class="header">
   <div class="container header__container">
     <div class="logo header__logo">{% include "partials/_logo.svg" %}</div>
@@ -33,11 +19,7 @@ listItems3:
       <div class="scroll-down__text">Скрольте<br>вниз</div>
       {% include "partials/_arrow.svg" %}
     </div>
-    <div class="social header__social">
-      <a href="#" class="social__link">facebook</a>
-      <a href="#" class="social__link">instagram</a>
-      <a href="#" class="social__link">behance</a>
-    </div>
+    {{mixins.social('header__social')}}
   </div>
 </header>
 <main>
@@ -45,7 +27,7 @@ listItems3:
     <div class="container section__container">
       <div class="arrow-block">
         <div class="arrow-block__left">
-          <div class="arrow-block__arrow-circle">
+          <div class="arrow-block__arrow-circle arrow-circle-mob-hidden">
             {% include "partials/_big-arrow.html" %}
           </div>
         </div>
@@ -60,10 +42,10 @@ listItems3:
     <div class="container zero-right-padding section__container section__container--last">
       <h2 class="h2 because">Поэтому, <span class="purple">компаниям</span> и&nbsp;<span class="purple">брендам</span> сейчас нужно:</h2>
       <ul class="list-items with-padding">
-        {% for text in listItems %}
+        {% for text in listItems.listItem1 %}
         <li class="list-items__item">
           <div class="list-items__line list-items__line--before"></div>
-          <span class="list-items__text">{{text}}</span>
+          <span class="list-items__text">{{text.title}}</span>
         </li>
         {% endfor %}
       </ul>
@@ -83,22 +65,22 @@ listItems3:
           </div>
         </div>
         <div class="arrow-block__right">
-          <p class="arrow-block__p">Мы сделаем <span class="purple">MVP<span class="question"></span></span> одностраничного сайта для вашего бизнеса <span class="purple">за 7 дней и $500</span></p>
+          <p class="arrow-block__p">Мы сделаем <span class="purple">MVP<span class="question"></span></span> одностраничного сайта для вашего бизнеса <span class="purple">за&nbsp;7 дней и&nbsp;$500</span></p>
         </div>
       </div>
     </div>
   </section>
   <section class="section">
     <div class="container zero-right-padding section__container">
-      <h2 class="h2 because">Почему <span class="purple">MVP от emotiON это круто</span> и выгодно?</h2>
+      <h2 class="h2 because">Почему <span class="purple">MVP от emotiON это круто</span> и&nbsp;выгодно?</h2>
       <p class="descriptor">Мы берём на себя ответственность, что вы получите ТОП-продукт за свои деньги.</p>
       <ul class="list-items">
-        {% for text in listItems2 %}
+        {% for text in listItems.listItem2 %}
         <li class="list-items__item">
           <div class="list-items__line list-items__line--before"></div>
           <div class="list-items__text-wrapper">
             {% include "partials/_big-arrow.html" %}
-            <span class="list-items__text">{{text|safe}}</span>
+            <span class="list-items__text">{{text.title|safe}}</span>
           </div>
         </li>
         {% endfor %}
@@ -110,15 +92,17 @@ listItems3:
     <div class="container zero-right-padding section__container section__container--last">
       <h2 class="h2 because">План действий</h2>
       <p class="descriptor">Чтобы создать ракету-пушку, мы будем работать вместе — вы&nbsp;хорошо знаете свой бизнес и&nbsp;расскажете нам о важных моментах.</p>
-      <ul class="list-items with-padding">
+      <div class="items-and-btn-wrapper">
+        <ul class="list-items with-padding">
+          {% for text in listItems.listItem3 %}
+          <li class="list-items__item">
+            <div class="list-items__line list-items__line--before"></div>
+            <span class="list-items__text">{{text.title}}</span>
+          </li>
+          {% endfor %}
+        </ul>
         {{mixins.btn('Важные моменты', 'plan-button')}}
-        {% for text in listItems3 %}
-        <li class="list-items__item">
-          <div class="list-items__line list-items__line--before"></div>
-          <span class="list-items__text">{{text}}</span>
-        </li>
-        {% endfor %}
-      </ul>
+      </div>
     </div>
   </section>
   <div class="black-block">
@@ -127,5 +111,30 @@ listItems3:
       <p class="black-block__p">Поэтому мы хотим помочь украинскому бизнесу <span class="purple">уйти в отрыв во время кризиса</span>, не тратя на это много денег. Без потери качества и с вау-эффектом.</p>
     </div>
   </div>
+  <div class="section portfolio-block">
+    <div class="container section__container section__container--last">
+      {{mixins.btn('Наше <br>портфолио', 'portfolio-button')}}
+    </div>
+  </div>
 </main>
+<footer class="footer">
+  <div class="container">
+    <h2>Здесь должен быть <span class="purple">call to action?</span> К&nbsp;чёрту чепуху, не будем терять время</h2>
+    <p class="footer__call-to-action">
+      Просто давайте сейчас обсудим вашу задачу и начнём работать. <br>Пишите в любой удобный мессенджер или звоните:
+      <br><span class="tel"><a href="tel:+380970422959">(097) 042 29 59</a></span>
+      <span class="messengers">(<span><a target="_blank" href="https://t.me/Roman_Stets">Telegram</a></span>, <span><a href="viber://chat?number=+380970422959">Viber</a></span>)</span>
+    </p>
+    {{mixins.btn('Оставить <br>заявку', 'footer-button', 'white')}}
+  </div>
+  {{mixins.social('footer__social')}}
+  <div class="footer__line">
+    <div class="container">
+      <a target="_blank" href="https://emotion-agency.com/">
+        {% include "partials/_logo.svg" %}
+      </a>
+      <span class="moc-text">Какой-то умный текст на последок</span>
+    </div>
+  </div>
+</footer>
 {% endblock %}
