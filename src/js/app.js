@@ -1,4 +1,5 @@
 import './lib/smoothscroll.js'
+import './lib/sayHello.js'
 
 import './ui/button.js'
 import './loader.js'
