@@ -56,7 +56,7 @@ export default class ScrollAnimation {
       .to(elem.querySelectorAll('h2'), 0.8, { opacity: 1, y: 0, ease: Power2.easeOut }, 0.3)
       .to(elem.querySelectorAll('.arrow-block__arrow-circle'), 0.8, { opacity: 1, scale: 1, ease: Power2.easeOut }, 0.3)
       .staggerTo(elem.querySelectorAll('p'), 0.8, { opacity: 1, y: 0, ease: Power1.easeOut }, 0.08, 0.5)
-      .staggerTo(elem.querySelectorAll('.list-items__line'), 1.5, { opacity: 1, width: '100%', ease: Power1.easeOut }, 0.2, 0.5)
+      .staggerTo(elem.querySelectorAll('.list-items__line'), 1, { opacity: 1, width: '100%', ease: Power1.easeOut }, 0.2, 0.5)
       .staggerTo(elem.querySelectorAll('.list-items__text'), 1.5, { opacity: 1, ease: Power1.easeOut }, 0.2, 0.5)
       .staggerTo(elem.querySelectorAll('.list-items svg'), 1.5, { opacity: 1, ease: Power1.easeOut }, 0.2, 0.5)
       .to(elem.querySelectorAll('.descriptor'), 0.8, { opacity: 1, y: 0, ease: Power2.easeOut }, 0.5)

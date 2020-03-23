@@ -1,0 +1,39 @@
+<div class="form-window">
+  {% include "partials/_close-icon.html" %}
+  <h2 class="form-window__h2">
+    <span class="h2__first-line">Только <span class="purple">телефон</span></span>
+    <span class="h2__second-line">и мы в деле 😎</span></h2>
+  <div class="form-wrapper">
+    <form data-url="./mail.php" class="form" name="form">
+      <!-- Hidden Required Fields -->
+      <input type="hidden" name="project_name" value="emotiON MVP">
+      <input type="hidden" name="admin_email" value="hello@emotion-agency.com">
+      <input type="hidden" name="form_subject" value="Заявка с сайта emotiON MVP">
+      <!-- END Hidden Required Fields -->
+      <div class="input-wrapper first">
+        <div class="input-wrapper">
+          <input type="tel" class="text-field" maxlength="256" name="Телефон" id="phone" autocomplete="off">
+          <label for="phone" class="label">
+            <span class="label-content">Введите ваш телефон</span>
+          </label>
+        </div>
+      </div>
+      <span data-value="5" class="form-validate-text">
+        минимум
+        <span class="koef-inp"></span>
+        символов. Осталось: <span class="koef-outp"></span></span>
+      <button type="submit" class="form-button">
+        <span class="form-button__arrow">
+          {% include "partials/_big-arrow.html" %}
+        </span>
+      </button>
+    </form>
+  </div>
+  <div class="thank-you-window">
+    <h2 class="form-window__h2">
+      <span class="thank-you-window__first-line">
+        <span class="purple">Спасибо</span>, ваше
+      </span> сообщение было отправлено
+    </h2>
+  </div>
+</div>

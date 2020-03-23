@@ -1,5 +1,6 @@
 ---
 title: Index page
+name: blah
 ---
 {% import "data/data.html" as listItems %}
 {% extends "layouts/_layout.html" %}
@@ -65,7 +66,7 @@ title: Index page
           </div>
         </div>
         <div class="arrow-block__right">
-          <p class="arrow-block__p">Мы сделаем <span class="purple">MVP<span class="question"></span></span> одностраничного сайта для вашего бизнеса <span class="purple">за&nbsp;7 дней и&nbsp;$500</span></p>
+          <p class="arrow-block__p">Мы сделаем <span class="purple">MVP<span class="question pop-up-handler"></span></span> одностраничного сайта для вашего бизнеса <span class="purple">за&nbsp;7 дней и&nbsp;$500</span></p>
         </div>
       </div>
     </div>
@@ -85,7 +86,7 @@ title: Index page
         </li>
         {% endfor %}
       </ul>
-      {{mixins.btn('Больше преимуществ', 'advantages-button')}}
+      {{mixins.btn('Больше преимуществ', 'advantages-button pop-up-handler')}}
     </div>
   </section>
   <section class="section">
@@ -101,7 +102,7 @@ title: Index page
           </li>
           {% endfor %}
         </ul>
-        {{mixins.btn('Важные моменты', 'plan-button')}}
+        {{mixins.btn('Важные моменты', 'plan-button pop-up-handler')}}
       </div>
     </div>
   </section>
@@ -125,7 +126,7 @@ title: Index page
       <br><span class="tel"><a href="tel:+380970422959">(097) 042 29 59</a></span>
       <span class="messengers">(<span><a target="_blank" href="https://t.me/Roman_Stets">Telegram</a></span>, <span><a href="viber://chat?number=+380970422959">Viber</a></span>)</span>
     </p>
-    {{mixins.btn('Оставить <br>заявку', 'footer-button', 'white')}}
+    {{mixins.btn('Оставить <br>заявку', 'footer-button form-handler', 'white')}}
   </div>
   {{mixins.social('footer__social')}}
   <div class="footer__line">
@@ -137,4 +138,8 @@ title: Index page
     </div>
   </div>
 </footer>
+{% include "partials/_form.html" %}
+{% include "partials/_mvp-pop-up.html" %}
+{% include "partials/_advantages-pop-up.html" %}
+{% include "partials/_moments-pop-up.html" %}
 {% endblock %}

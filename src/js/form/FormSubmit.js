@@ -1,6 +1,9 @@
+import { TimelineMax, Power1 } from 'gsap'
+
 import FormInputs from './FormInputs.js'
 import serialize from '../lib/formSend.js'
 import pseudoPrototype from '../lib/pseudo.prototype.js'
+import FormPopUp from '../form/FormPopUp.js'
 
 export default class FormSubmit extends FormInputs {
 
@@ -8,103 +11,73 @@ export default class FormSubmit extends FormInputs {
     super()
     pseudoPrototype()
 
-    this.submit()
-  }
+    this.thankYouWindow = document.querySelector('.thank-you-window')
 
-  requestLoad() {
+    this.form.onsubmit = (e) => this.submit(e)
 
-    let that = this
-
-    setTimeout(() => {
-      let tl = new TimelineMax()
-      tl
-        .to(that.thankYouScreen, 0.01, { display: 'flex', ease: Power1.easeInOut })
-        .to(that.thankYouScreenBg2, 1, { opacity: 0.8, ease: Power1.easeInOut })
-        .fromTo(that.thankYouScreenBg, 1.5, { y: '100%' }, { y: '0%', ease: Power1.easeInOut }, 0.2)
-        .to(that.thankYouScreenContent, 1, { opacity: 1, ease: Power1.easeInOut }, 0.8)
-
-      that.form.reset()
-      // dataLayer.push({ 'event': 'otpravka_form' })
-      document.body.classList.remove('form-focused')
-      for (let input of that.input) {
-        input.classList.remove('focus')
-      }
-
-      if (that.formPopUp) {
-        that.formPopUp.style.opacity = '0'
-        that.formPopUp.style.pointerEvents = 'none'
-      }
-
-    }, 200)
   }
 
   validation() {
 
-    let that = this
-    that.validateText.innerHTML = 'поле не може бути порожнім'
-    that.validateText.style.opacity = '1'
-    that.phone.focus()
-    that.thislabel.pseudoStyle('after', 'border-color', '#F44336!important')
+    this.validateText.querySelector('.koef-inp').innerHTML = this.koef
+    this.validateText.querySelector('.koef-outp').innerHTML = this.koef - this.phone.value.trim('').length
+    this.validateText.style.opacity = '1'
+
+    this.phone.focus()
+    this.label.pseudoStyle('after', 'border-color', '#F44336!important')
   }
 
-  submit() {
+  requestLoad() {
 
-    let that = this
-    
+    const tl = new TimelineMax({onComplete: () => FormPopUp.closeEvent()})
+    tl
+      .to(this.thankYouWindow, 1, { opacity: 1, ease: Power3.easeInOut })
+      .to(this.thankYouWindow, 1, { opacity: 0, ease: Power3.easeInOut }, 4)
 
-    that.form.onsubmit = (e) => {
-      switch (that.phone.value) {
+    this.form.reset()
+    document.body.classList.remove('form-focused')
+    for (let input of this.input) {
+      input.classList.remove('focus')
+    }
 
-        case '':
-
-          that.validation.bind(that)()
-          e.preventDefault()
-
-          return false
-
-          break
+    // dataLayer.push({ 'event': 'otpravka_form' })
+  }
 
 
-        default:
+  async requestSend() {
 
-          that.validateText.style.opacity = '0'
+    const URL = this.form.getAttribute('data-url')
 
-          let request = new XMLHttpRequest()
-          request.open('POST', './mail.php', true)
-          request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
+    try {
 
-          let data = serialize(that.form)
+      await fetch(URL, {
+        method: 'POST',
+        body: serialize(this.form),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        }
+      })
+        .then(response => response.status >= 200 && response.status < 400 ?
+          this.requestLoad() : alert('При отправке произошла ошибка:('))
+      // this.requestLoad() : this.requestLoad())
 
-          request.onload = function() {
-            if (this.status >= 200 && this.status < 400) {
-              
-              that.requestLoad()
-            }
-          }
-
-          request.send(data)
-          return false
-      }
+    } catch (e) {
+      console.log(e)
     }
   }
 
-//   onchange() {
-//     this.input.addEventListener('input', function (e) {
-      
-//     }, false);
-//     that.form.onsubmit = (e) => {
-//     switch (that.phone.value) {
 
-//         case '':
 
-//           that.validation()
-//           e.preventDefault()
+  submit(e) {
 
-//           return false
+    if (this.phone.value.trim('').length < this.koef) {
+      this.validation()
+      e.preventDefault()
+    } else {
+      this.requestSend()
+    }
 
-//           break
-//   }
-// }
-// }
 
+    return false
+  }
 }
