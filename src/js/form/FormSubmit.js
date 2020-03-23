@@ -1,4 +1,4 @@
-import { TimelineMax, Power1 } from 'gsap'
+import { TimelineMax, Power3 } from 'gsap'
 
 import FormInputs from './FormInputs.js'
 import serialize from '../lib/formSend.js'
@@ -29,7 +29,7 @@ export default class FormSubmit extends FormInputs {
 
   requestLoad() {
 
-    const tl = new TimelineMax({onComplete: () => FormPopUp.closeEvent()})
+    const tl = new TimelineMax({ onComplete: () => FormPopUp.closeEvent() })
     tl
       .to(this.thankYouWindow, 1, { opacity: 1, ease: Power3.easeInOut })
       .to(this.thankYouWindow, 1, { opacity: 0, ease: Power3.easeInOut }, 4)
@@ -44,26 +44,30 @@ export default class FormSubmit extends FormInputs {
   }
 
 
-  async requestSend() {
-
+  requestSend() {
     const URL = this.form.getAttribute('data-url')
 
+    const request = new XMLHttpRequest()
+    request.open('POST', URL, true)
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
+
+    const data = serialize(this.form)
     try {
+      request.onload = () => {
+        if (request.status >= 200 && request.status < 400) {
 
-      await fetch(URL, {
-        method: 'POST',
-        body: serialize(this.form),
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+          this.requestLoad()
+        } else {
+          alert('При отправке произошла ошибка:(')
         }
-      })
-        .then(response => response.status >= 200 && response.status < 400 ?
-          this.requestLoad() : alert('При отправке произошла ошибка:('))
-      // this.requestLoad() : this.requestLoad())
-
+      }
+      request.send(data)
     } catch (e) {
       console.log(e)
+      alert(e)
     }
+
+    return false
   }
 
 
