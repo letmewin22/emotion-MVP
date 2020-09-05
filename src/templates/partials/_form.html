@@ -1,0 +1,42 @@
+<div class="form-window">
+  {% include "partials/_close-icon.html" %}
+  <h2 class="form-window__h2">
+    <span class="h2__first-line">Тільки <span class="purple">телефон</span></span>
+    <span class="h2__second-line">й ми стартуємо</span></h2>
+  <div class="form-wrapper">
+    <form data-url="./mail.php" class="form" name="form">
+      <!-- Hidden Required Fields -->
+      <input type="hidden" name="project_name" value="emotiON MVP">
+      <input type="hidden" name="admin_email" value="hello@emotion-agency.com">
+      <input type="hidden" name="form_subject" value="Заявка с сайта emotiON MVP">
+      <input data-sale type="hidden" name="sale" value="false">
+      <!-- END Hidden Required Fields -->
+      <div class="input-wrapper first">
+        <div class="input-wrapper">
+          <input type="tel" class="text-field" maxlength="256" name="Телефон" id="phone" autocomplete="off">
+          <label for="phone" class="label">
+            <span class="label-content">Введіть ваш телефон</span>
+          </label>
+        </div>
+      </div>
+      <span data-value="5" class="form-validate-text">
+        мінімум
+        <span class="koef-inp"></span>
+        символів. Залишилось: <span class="koef-outp"></span></span>
+      <button type="submit" class="form-button">
+        <span class="form-button__arrow">
+          <svg width="27" height="16" viewBox="0 0 27 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26.7071 8.70711C27.0976 8.31658 27.0976 7.68342 26.7071 7.29289L20.3431 0.928932C19.9526 0.538408 19.3195 0.538408 18.9289 0.928932C18.5384 1.31946 18.5384 1.95262 18.9289 2.34315L24.5858 8L18.9289 13.6569C18.5384 14.0474 18.5384 14.6805 18.9289 15.0711C19.3195 15.4616 19.9526 15.4616 20.3431 15.0711L26.7071 8.70711ZM0 9L26 9V7L0 7L0 9Z" fill="white" />
+          </svg>
+        </span>
+      </button>
+    </form>
+  </div>
+  <div class="thank-you-window">
+    <h2 class="form-window__h2">
+      <span class="thank-you-window__first-line">
+        <span class="purple">Дякуємо</span>, ваша
+      </span> заявка була надіслана
+    </h2>
+  </div>
+</div>

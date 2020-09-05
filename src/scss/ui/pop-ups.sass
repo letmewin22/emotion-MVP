@@ -1,0 +1,57 @@
+.pop-up-window
+	width: 100%
+	height: 100vh
+	position: fixed
+	z-index: 100
+	background: rgba(0,0,0, 0.5)
+	display: flex
+	justify-content: center
+	align-items: center
+	top: 0
+	left: 0
+	opacity: 0
+	transition: opacity .5s ease
+	pointer-events: none
+	&.opened
+		opacity: 1
+		pointer-events: auto
+		.pop-up
+			transform: translateY(0px)
+		
+
+.pop-up
+	padding-left: 34px
+	padding-right: 34px
+	background: $main-color
+	position: relative
+	max-width: 585px
+	padding-top: 45px
+	padding-bottom: 45px
+	display: flex
+	justify-content: center
+	flex-direction: column
+	transform: translateY(-100px)
+	transition: transform 0.6s ease
+	font-size: 24px
+	+am
+	.close-icon
+		width: 25px
+		height: 25px
+		position: absolute
+		right: 3%
+		top: 3%
+		path
+			pointer-events: none
+
+
+.mvp-pop-up
+	&__p2
+		margin-top: 60px
+
+.pop-up-list
+	color: $accent-color
+	margin-top: 30px
+	li
+		margin-top: 17px
+		list-style: decimal 
+		list-style-position: inside

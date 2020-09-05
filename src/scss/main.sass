@@ -1,0 +1,393 @@
+body
+	+a
+	font-size: 1.55vw
+	color: $dark-color
+	background: $main-color
+
+*
+  &::selection
+    background: $accent-color
+    color: white
+
+.custom 
+  scrollbar-width: none 
+  -ms-overflow-style: none 
+  &::-webkit-scrollbar 
+    width: 0px 
+    background: transparent 
+
+.header
+	width: 100%
+	height: 100vh
+	background: $dark-color
+	color: white
+	position: relative
+	&__container
+		display: flex
+		align-items: center
+	&__logo
+		position: absolute
+		top: 4%
+		opacity: 0
+	&__social
+		position: absolute
+		bottom: 4%
+		opacity: 0
+
+.h1
+	font-size: 5.2vw
+	line-height: 1.3em
+	opacity: 0
+	perspective: 1000px
+	display: block
+	.word
+		display: inline-block
+	.line-wrapper
+		display: inline-block
+		opacity: 0
+		transform: translateY(100px) rotateX(60deg)
+		@include media('>=960px')
+			&:nth-child(2)
+				float: right
+			
+	// &__first-line
+	// 	display: block
+	// 	opacity: 0
+	// 	transform: translateY(100px) rotateX(60deg)
+	// &__second-line
+	// 	display: block
+	// 	margin-left: 11.5vw
+	// 	opacity: 0
+	// 	transform: translateY(100px) rotateX(60deg)
+	// &__third-line
+	// 	display: block 
+	// 	opacity: 0
+	// 	transform: translateY(100px) rotateX(60deg)
+
+.purple
+	color: $accent-color
+
+.social
+	font-size: 0.9vw
+	display: flex
+	&__link
+		margin-right: 2.9vw
+		transition: color .3s ease
+		&:hover
+			color: $accent-color
+
+.scroll-down
+	background: $accent-color
+	width: 14vw
+	height: 14vw
+	border-radius: 50%
+	padding-left: 10px
+	padding-right: 10px
+	display: flex
+	justify-content: center
+	align-items: center
+	flex-direction: column
+	position: absolute
+	right: 8.6vw
+	top: 7.68vh
+	text-transform: uppercase
+	+asm
+	font-size: 1.25vw
+	text-align: center
+	opacity: 0
+	transform: scale(0)
+	&__arrow
+		position: absolute
+		bottom: 15% 
+		animation: arrow-anim 1.5s ease-in-out infinite
+
+
+
+@keyframes arrow-anim
+  0%
+    transform: translateY(-10px)
+  50%
+  	transform: translateY(0px)
+  100%
+    transform: translateY(-10px)
+
+.arrow-block
+	display: flex
+	justify-content: space-between
+	align-items: center
+	&__right
+		margin-left: 16.7vw
+	&__arrow-circle 
+		width: 23vw
+		height: 23vw
+		border-radius: 50%
+		background: $accent-color
+		display: flex
+		justify-content: center
+		align-items: center
+		opacity: 0
+		transform: scale(0)
+		svg
+			display: block
+	&__p
+		+am
+		font-size: 2.7vw
+		line-height: 1.65em
+		letter-spacing: 0.01em
+		flex-direction: row-reverse
+		position: relative 
+		opacity: 0
+		transform: translateY(60px)
+
+.arrow-block-reverse
+	flex-direction: row-reverse
+	.arrow-block
+		&__right
+			margin-left: 0px
+		&__left
+			margin-left: 16.7vw
+		&__arrow-circle 
+			svg
+				transform: rotate(180deg)
+
+.list-items
+	margin-top: 12vh
+	position: relative
+	&__line
+		width: 0
+		height: 3px
+		background: $dark-color
+		opacity: 0
+	&__item
+		&:last-child
+			&::after
+				content: ''
+				width: 100%
+				height: 3px
+				background: $dark-color
+				display: block
+	&__text
+		display: inline-block
+		padding-top: 5.4vh
+		padding-bottom: 5.4vh 
+		line-height: 1.5em
+		padding-right: 5.2vw
+		opacity: 0
+	&.with-padding
+		padding-left: 22.7vw 
+	&__text-wrapper
+		display: flex
+		align-items: center
+		svg
+			margin-right: 5vw
+			fill: $dark-color
+			width: 8%
+			opacity: 0
+		.list-items__text
+			width: 90%
+
+.black-block
+	background: $dark-color
+	color: white
+	padding-top: 9.2vh
+	padding-bottom: 9.2vh
+	&__big-p
+		font-size: 2.2vw
+		+druk
+		line-height: 1.6em
+	h2
+		max-width: 100%
+	&__p
+		margin-top: 28px 
+
+.question
+	// top: 0
+	background: $accent-color
+	color: white
+	padding: 7px
+	border-radius: 50%
+	width: 40px
+	height: 40px
+	display: inline-flex
+	justify-content: center
+	align-items: center
+	font-size: 1.5vw
+	line-height: 1em
+	position: absolute
+	top: -20px
+	margin-left: -10px
+	cursor: pointer 
+	&::after
+		content: '?'
+		display: inline-block
+		margin-top: 3px 
+
+.line-through
+	text-decoration: line-through 
+
+.footer
+	min-height: 100vh
+	background: $dark-color
+	color: white
+	display: flex
+	justify-content: center
+	align-items: center
+	padding-bottom: 100px
+	position: relative
+	h2
+		max-width: none
+	&__call-to-action
+		margin-top: 10.3vh
+		line-height: 1.6em
+		position: relative
+		.tel
+			color: $accent-color
+			width: fit-content
+			display: inline-block
+			position: relative
+			overflow: hidden
+			&::after
+				content: ''
+				display: inline-block 
+				width: 100%
+				height: 2px
+				background: $accent-color
+				position: absolute
+				bottom: 0.5vw
+				left: 0
+			&:hover
+				&::after
+					animation: button-line 1s ease-in-out
+
+		
+		.messengers
+			display: inline-block
+			font-size: 0.9vw
+			position: absolute
+			bottom: 0.5vw
+			margin-left: 20px
+			a
+				display: inline-block
+				position: relative
+				overflow: hidden
+				line-height: 1em
+				transform: translateY(3px)
+				transition: color .3s ease
+				&::after
+					content: ''
+					display: inline-block
+					width: 100%
+					height: 1px
+					background: white
+					position: absolute
+					bottom: 0px
+					left: 0
+					transition: background .3s ease
+				&:hover
+					color: $accent-color
+					&::after
+						background: $accent-color
+	&__social
+		position: absolute
+		bottom: 10%
+		left: 5.2vw
+	&__line
+		position: absolute
+		bottom: 0
+		width: 100%
+		background: $main-color
+		font-size: 20px
+		.container
+			display: flex
+			justify-content: space-between
+			align-items: center
+			padding-top: 20px
+			padding-bottom: 10px
+			color: $dark-color
+			a
+				display: block
+			svg
+				fill: $dark-color
+				display: block
+
+.moc-text
+	font-size: 14px
+	line-height: 1em
+	opacity: 0.7
+	cursor: pointer
+
+.items-and-btn-wrapper
+	position: relative 
+
+@keyframes button-line
+	0%
+		transform: translateX(0%) 
+
+	50%
+		transform: translateX(100%)
+
+	51%
+		transform: translateX(-100%)
+
+	100%
+		transform: translateX(0%)
+
+.close-icon
+  cursor: pointer
+  transition: fill .3s ease
+  &:hover
+    fill: $accent-color
+
+.progress
+  position: fixed
+  top: 0
+  left: 0
+  background: $accent-color
+  height: 3px
+  width: 0%
+  z-index: 10
+
+
+.portfolio-block__items 
+  margin-top: size(86, 50)
+  display: grid
+  width: 100%
+  grid-template-columns: repeat(3, 1fr)
+  grid-column-gap: 40px 
+  grid-row-gap: 60px 
+  @include media('<=1200px') 
+  	grid-template-columns: repeat(2, 1fr) 
+  @include media('<=720px') 
+    grid-template-columns: repeat(1, 1fr) 
+    grid-gap: 40px 
+	
+.portfolio-block__item
+  position: relative
+  display: block
+  overflow: hidden 
+.portfolio-block__item-img-wrapper 
+	width: 100%
+	height: 20vw
+	overflow: hidden
+	@include media('<=1200px')
+		height: 30vw
+	@include media('<=720px')
+		height: 300px
+	img
+		max-width: 100%
+		width: 100%
+		height: 100%
+		object-fit: cover
+		display: block
+		transition: transform .3s ease
+	&:hover
+		img
+			transform: scale(1.02)
+.portfolio-block__item-h 
+	margin-top: size(20, 16)
+	+druk
+	font-size: size(32, 20)
+.portfolio-block__item-desc 
+	margin-top: size(16, 12)
+	font-size: size(20, 16)
+	width: 90%

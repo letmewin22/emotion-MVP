@@ -1,0 +1,151 @@
+{% set 'title' = 'Лендінг за $500 та 7 днів | Креативна агенція emotiON' %}
+{% set 'description' = 'Створимо лендінг для бізнесу в Україні. Концепція, тексти, програмування. Розробка сайта від креативної агенції. Без конструкторів та шаблонів.' %}
+
+{% import "data/data.html" as listItems %}
+{% extends "layouts/_layout.html" %}
+{% block content %}
+  {% include "partials/_loader.html" %}
+  <header class="header">
+    <div class="container header__container">
+      <div class="logo header__logo">{% include "partials/_logo.svg" %}</div>
+      <h1 class="h1">Створимо лендінг, щоб&nbsp;протестувати вашу бізнес-ідею</h1>
+      {{mixins.social('header__social')}}
+    </div>
+  </header>
+  <main>
+    <section class="section">
+      <div class="container section__container">
+        <div class="arrow-block">
+          <div class="arrow-block__left">
+            <div class="arrow-block__arrow-circle arrow-circle-mob-hidden">
+              {% include "partials/_big-arrow.html" %}
+            </div>
+          </div>
+          <div class="arrow-block__right">
+            <p class="arrow-block__p purple">Зараз такі часи, що краще мати бізнес онлайн.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container zero-right-padding section__container section__container--last">
+        <h2 class="h2 because">Бізнесу зараз потрібно:</h2>
+        <ul class="list-items with-padding">
+          {% for text in listItems.listItem1 %}
+            <li class="list-items__item">
+              <div class="list-items__line list-items__line--before"></div>
+              <span class="list-items__text">{{text.title}}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+    <div class="black-block">
+      <div class="container">
+        <p class="black-block__big-p">Ми знаємо, що <span class="purple">ви НЕ хочете витрачати гроші на дурниці.</span> Тому й пропонуємо допомогу!</p>
+      </div>
+    </div>
+    <section class="section">
+      <div class="container section__container">
+        <div class="arrow-block arrow-block-reverse">
+          <div class="arrow-block__left">
+            <div class="arrow-block__arrow-circle">
+              {% include "partials/_big-arrow.html" %}
+            </div>
+          </div>
+          <div class="arrow-block__right">
+            <p class="arrow-block__p">Ми <span class="purple">створимо лендінг</span> для вашого бізнесу або тестування бізнес-ідеї <span class="purple">за 7 днів та $500</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container zero-right-padding section__container">
+        <h2 class="h2 because">Чому <span class="purple">Лендінг від Emotion це круто та вигідно</span>?</h2>
+        <p class="descriptor">Ми беремо на себе відповідальність, що ви отримаєте ТОП-сайт за свої гроші.</p>
+        <ul class="list-items">
+          {% for text in listItems.listItem2 %}
+            <li class="list-items__item">
+              <div class="list-items__line list-items__line--before"></div>
+              <div class="list-items__text-wrapper">
+                {% include "partials/_big-arrow.html" %}
+                <span class="list-items__text">{{text.title|safe}}</span>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+        {{mixins.btn('Більше <br>переваг', 'advantages-button pop-up-handler')}}
+      </div>
+    </section>
+    <section class="section">
+      <div class="container zero-right-padding section__container section__container--last">
+        <h2 class="h2 because">План дій</h2>
+        <p class="descriptor">Щоб створити лендінг, ми будемо працювати разом — ви добре знаєте свій бізнес чи ідею, та розповісте нам про важливі моменти.</p>
+        <div class="items-and-btn-wrapper">
+          <ul class="list-items with-padding">
+            {% for text in listItems.listItem3 %}
+              <li class="list-items__item">
+                <div class="list-items__line list-items__line--before"></div>
+                <span class="list-items__text">{{text.title}}</span>
+              </li>
+            {% endfor %}
+          </ul>
+          {{mixins.btn('Важливі <br>моменти', 'plan-button pop-up-handler')}}
+        </div>
+      </div>
+    </section>
+    <div class="black-block">
+      <div class="container">
+        <h2>Ми хочемо, щоб український бізнес мав&nbsp;круті сайти</h2>
+        <p class="black-block__p">Тому зробимо все, щоб ви сподобались своїм клієнтам!</p>
+      </div>
+    </div>
+    <div class="section portfolio-block">
+      <div class="container section__container section__container--last">
+        <h2>Наші проєкти</h2>
+        <div class="portfolio-block__items">
+          {% for item in listItems.cases %}
+            <a href="{{item.link}}" target='_blank' rel='noreferer noopener' class="portfolio-block__item">
+              <div class="portfolio-block__item-img-wrapper">
+                <img src="img/{{item.img}}" alt="portfolio-image">
+              </div>
+              <div class="portfolio-block__item-h">{{item.title}}</div>
+              <div class="portfolio-block__item-desc">{{item.desc}}</div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <h2>Тут має бути <span class="purple">call to action?</span> До біса нісенітницю, не втрачатимемо час.</h2>
+      <p class="footer__call-to-action">
+      Просто давайте зараз обговоримо вашу задачу та почнемо працювати. <br>Пишіть в будь-який зручний месенджер або телефонуйте:
+      <br>
+        <span class="tel">
+          <a href="tel:+380970422959">(097) 042 29 59</a>
+        </span>
+        <span class="messengers">(<span>
+            <a target="_blank" href="https://t.me/Roman_Stets">Telegram</a>
+          </span>, <span>
+            <a href="viber://chat?number=+380970422959">Viber</a>
+          </span>)</span>
+      </p>
+      {{mixins.btn('Залишити <br>заявку', 'footer-button form-handler', 'white')}}
+    </div>
+    {{mixins.social('footer__social')}}
+    <div class="footer__line">
+      <div class="container">
+        <a target="_blank" href="https://emotion-agency.com/">
+          {% include "partials/_logo.svg" %}
+        </a>
+        <span class="moc-text form-handler js-sale">Тисни сюди, та отримай знижку 10% на майбутній проєкт</span>
+      </div>
+    </div>
+  </footer>
+  {% include "partials/_form.html" %}
+  {# {% include "partials/_mvp-pop-up.html" %} #}
+  {% include "partials/_advantages-pop-up.html" %}
+  {% include "partials/_moments-pop-up.html" %}
+{% endblock %}
